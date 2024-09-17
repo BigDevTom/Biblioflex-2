@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+/* Global Styles for the entire application */
+
+:root {
+  /* Color Palette */
+  --primary-color: #2C3E50;
+  --secondary-color: #3498DB;
+  --light-gray: #ECF0F1;
+  --white: #FFFFFF;
+  --green: #2ECC71;
+  --red: #E74C3C;
+
+  /* Typography */
+  --font-primary: 'Roboto', sans-serif;
+
+  /* Font sizes */
+  --font-size-h1: 32px;
+  --font-size-h2: 28px;
+  --font-size-h3: 24px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+
+  /* Border radius */
+  --border-radius: 4px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  background-color: var(--white);
+  color: var(--primary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1, h2, h3 {
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+p {
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+}
+
+/* Buttons */
+button {
+  font-size: var(--font-size-body);
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+button.primary:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Form Inputs */
+input, textarea {
+  font-size: var(--font-size-body);
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+label {
+  font-size: var(--font-size-small);
+  color: var(--primary-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar .logo {
+  font-size: var(--font-size-h2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar .links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .links a {
+  color: var(--white);
+  font-size: var(--font-size-body);
 }

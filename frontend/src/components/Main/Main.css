@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  gap: 20px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+p {
+  color: var(--primary-color);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  margin-bottom: 16px; 
+}
