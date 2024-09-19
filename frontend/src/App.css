@@ -105,27 +105,3 @@ label {
   width: 100%;
   max-width: 1200px;
 }
-
-/* Navigation bar */
-.navbar {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar .logo {
-  font-size: var(--font-size-h2);
-}
-
-.navbar .links {
-  display: flex;
-  gap: 20px;
-}
-
-.navbar .links a {
-  color: var(--white);
-  font-size: var(--font-size-body);
-}
