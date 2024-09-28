@@ -18,5 +18,15 @@ exports.findByEmail = (email, callback) => {
         return callback(null, null); // Pas d'utilisateur trouvé
       }
       return callback(null, results[0]); // Retourner le premier utilisateur trouvé
-    });
-  };
+  });
+};
+
+exports.getAllUsers = (callback) => {
+  const query = 'SELECT * FROM users';
+  db.query(query, (err, results) => {
+    if (err) {
+      return callback(err, null);
+    }
+    return callback(null, results);
+  });
+};

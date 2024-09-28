@@ -8,4 +8,7 @@ router.post('/users', userController.createUser);
 // Route pour la connexion
 router.post('/login', userController.loginUser);
 
+// Route pour récépurer tous les utilisateurs
+router.get('/users', userController.getAllUsers);
+
 module.exports = router;

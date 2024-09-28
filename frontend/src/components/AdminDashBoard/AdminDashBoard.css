@@ -1,0 +1,84 @@
+.admin-dashboard {
+  padding: 40px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid var(--light-gray);
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+td {
+  background-color: var(--light-gray);
+}
+
+.create-user-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-user-button:hover {
+  background-color: #2980b9;
+}
+
+.create-user-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+  background-color: var(--light-gray);
+}
+
+.create-user-form div {
+  margin-bottom: 15px;
+}
+
+.create-user-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.create-user-form input[type="text"],
+.create-user-form input[type="email"],
+.create-user-form input[type="password"],
+.create-user-form select {
+    width: 50%; /* Prend toute la largeur de son conteneur */
+    padding: 10px; /* Ajoute de l'espace intérieur */
+    border: 1px solid #ccc; /* Couleur de la bordure */
+    border-radius: 4px; /* Coins arrondis */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
+
+.create-user-form button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-user-form button:hover {
+  background-color:  #2980b9;
+}

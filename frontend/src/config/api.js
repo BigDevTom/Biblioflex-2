@@ -16,3 +16,23 @@ export const registerUser = async (userData) => {
         throw error;
     }
 };
+
+export const getAllUsers = async () => {
+    try {
+        const response = await fetch(`${API_URL}/users`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des utilisateurs');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la récupération des utilisateurs', error);
+        throw error;
+    }
+};

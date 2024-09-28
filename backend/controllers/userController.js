@@ -60,3 +60,13 @@ exports.loginUser = (req, res) => {
     });
   });
 };
+
+exports.getAllUsers = (req, res) => {
+  User.getAllUsers((err, users) => {
+    if(err) {
+      console.error('Erreur lors de la récupération des utilisateurs : ', err);
+      return res.status(500).json({ message: 'Erreur lors de la récupération des utilisateurs.' });
+    }
+    res.status(200).json(users);
+  });
+};
