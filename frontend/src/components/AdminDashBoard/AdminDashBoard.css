@@ -63,7 +63,7 @@ td {
 .create-user-form input[type="email"],
 .create-user-form input[type="password"],
 .create-user-form select {
-    width: 50%; /* Prend toute la largeur de son conteneur */
+ 
     padding: 10px; /* Ajoute de l'espace intérieur */
     border: 1px solid #ccc; /* Couleur de la bordure */
     border-radius: 4px; /* Coins arrondis */

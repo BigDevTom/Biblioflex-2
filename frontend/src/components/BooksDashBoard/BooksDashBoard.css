@@ -1,0 +1,68 @@
+.books-dashboard {
+    margin: 20px;
+    padding-bottom: 80px; /* Ajoute de l'espace en bas pour éviter que le footer cache le contenu */
+}
+
+.create-book-form {
+    margin-top: 20px;
+    border: 1px solid var(--light-gray);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--light-gray); /* Ajout d'une couleur de fond pour le formulaire */
+}
+
+.create-book-button {
+    display: flex;
+    justify-content: center; /* Centre le bouton dans son conteneur */
+    margin-top: 20px; /* Espacement au-dessus du bouton */
+}
+
+.create-book-form div {
+    margin-bottom: 15px;
+}
+
+.create-book-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Changement de couleur du texte pour une meilleure visibilité */
+}
+
+.create-book-form input[type="text"],
+.create-book-form input[type="date"],
+.create-book-form input[type="number"],
+.create-book-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px; /* Augmentation de la taille de la police pour une meilleure lisibilité */
+}
+
+.create-book-form textarea {
+    resize: vertical; /* Permet à l'utilisateur de redimensionner la zone de texte */
+    min-height: 100px; /* Hauteur minimale de la zone de texte */
+}
+
+.create-book-form button {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 16px; /* Augmentation de la taille de la police pour le bouton */
+    transition: background-color 0.3s; /* Transition douce pour le changement de couleur */
+}
+
+.create-book-form button:hover {
+    background-color: #2980b9;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centre le bouton horizontalement */
+    margin-top: 20px; /* Ajoute un espacement au-dessus du conteneur */
+}
