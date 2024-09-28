@@ -2,11 +2,7 @@ const db = require('../config/db');
 
 // Fonction pour obtenir tous les livres
 exports.getAllBooks = (req, res) => {
-    const query = `
-        SELECT b.*, g.name AS genre_name 
-        FROM books b
-        JOIN genres g ON b.genre_id = g.id
-    `;
+    const query = 'SELECT * FROM books';
     db.query(query, (err, results) => {
         if (err) return res.status(500).json({ message: 'Erreur lors de la récupération des livres.' });
         res.json(results);

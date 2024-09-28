@@ -47,6 +47,11 @@ function BooksDashboard() {
         });
     };
 
+    const getGenreName = (id) => {
+        const genre = genres.find((genre) => genre.id === id);
+        return genre ? genre.name : 'Inconnu'; // Si le genre n'est pas trouvé, retourne 'Inconnu'
+    };
+
     const handleCreateBook = async (e) => {
         e.preventDefault();
         try {
@@ -88,18 +93,18 @@ function BooksDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((book) => (
-                        <tr key={book.id}>
-                            <td>{book.id}</td>
-                            <td>{book.title}</td>
-                            <td>{book.author}</td>
-                            <td>{book.genre_name}</td>
-                            <td>{book.publication_date}</td>
-                            <td>{book.isbn}</td>
-                            <td>{book.copies_available}</td>
-                            <td>{book.description}</td>
-                        </tr>
-                    ))}
+                {books.map((book) => (
+                <tr key={book.id}>
+                    <td>{book.id}</td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{getGenreName(book.genre_id)}</td>
+                    <td>{book.publication_date}</td>
+                    <td>{book.isbn}</td>
+                    <td>{book.copies_available}</td>
+                    <td>{book.description}</td>
+                </tr>
+            ))}
                 </tbody>
             </table>
 
