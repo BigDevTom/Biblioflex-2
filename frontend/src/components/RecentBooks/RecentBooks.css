@@ -1,0 +1,33 @@
+.recent-books {
+    margin: 20px 0; /* Espace autour du composant */
+    padding: 20px; /* Padding interne */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #f9f9f9; /* Fond clair */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.recent-books h2 {
+    font-size: 24px; /* Taille de la police */
+    margin-bottom: 15px; /* Espace en dessous du titre */
+    color: #333; /* Couleur du texte */
+}
+
+.recent-books ul {
+    list-style-type: none; /* Pas de puces */
+    padding: 0; /* Pas de padding */
+}
+
+.recent-books li {
+    padding: 10px; /* Espace interne pour chaque livre */
+    margin-bottom: 10px; /* Espace entre les livres */
+    border-bottom: 1px solid #eee; /* Ligne en bas de chaque livre */
+}
+
+.recent-books li:last-child {
+    border-bottom: none; /* Pas de ligne en bas du dernier livre */
+}
+
+.recent-books strong {
+    color: #0056b3; /* Couleur pour les titres des livres */
+}

@@ -3,26 +3,41 @@
   color: var(--white);
   padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Espace entre le logo et les liens */
+  align-items: center; /* Alignement vertical centré */
 }
 
 .navbar .logo {
   font-size: var(--font-size-h2);
+  color: var(--white); /* Assurez-vous que le logo est visible sur le fond */
+  text-decoration: none; /* Enlever le soulignement du lien */
 }
 
 .navbar .links {
-  display: flex;
-  gap: 30px; /* Augmenter l'espacement entre les liens */
+  display: flex; /* Aligne les liens horizontalement */
+  align-items: center; /* Centre verticalement les éléments */
+  gap: 30px; /* Espacement entre les liens */
 }
 
 .navbar .links a {
   color: var(--white);
   text-decoration: none;
   font-size: var(--font-size-body);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* Transition pour le changement de couleur */
 }
 
-.navbar .links a:hover {
-  color: var(--secondary-color);
+.navbar .links a:hover, 
+.logout-link:hover {
+  color: var(--secondary-color); /* Changement de couleur au survol */
+  transform: scale(1.05); /* Légère augmentation de la taille au survol */
+}
+
+.logout-link {
+  color: var(--white);
+  margin-top: 0;
+  background: none;
+  border: none;
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: color 0.3s ease; /* Transition pour le changement de couleur */
 }

@@ -55,7 +55,6 @@ p {
 /* Buttons */
 button {
   font-size: var(--font-size-body);
-  padding: 10px 20px;
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;

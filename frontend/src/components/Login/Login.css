@@ -1,0 +1,67 @@
+.login-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 120px auto;
+  padding: 20px;
+  background-color: var(--white);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+p {
+  margin-top: 20px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Style pour le lien d'inscription */
+p a {
+  color: var(--primary-color);
+  text-decoration: underline; /* Souligner le lien */
+  cursor: pointer; /* Changer le curseur pour indiquer que c'est cliquable */
+}
+
+p a:hover {
+  color: var(--secondary-color); /* Changer la couleur au survol */
+}

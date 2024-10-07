@@ -1,23 +1,51 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
   const location = useLocation(); // Hook pour obtenir l'URL actuelle
+  const navigate = useNavigate(); // Utiliser pour la redirection
+
+  // Vérifier si l'utilisateur est connecté (présence du token)
+  const isAuthenticated = localStorage.getItem('token') !== null;
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Supprimer le token pour déconnecter l'utilisateur
+    localStorage.removeItem('user'); // Supprimer les données utilisateur
+    navigate('/'); // Redirection vers la page d'accueil
+  }
 
   return (
     <header className="navbar">
-      <div className="logo">Biblioflex</div>
+      <Link to="/" className="logo">Biblioflex</Link>
       <nav className="links">
-        <Link to="/login">Connexion</Link>
-        {/* Si l'utilisateur est sur la page d'inscription, afficher "Accueil" */}
-        {location.pathname === '/register' ? (
-          <Link to="/">Accueil</Link>
+        {/* Afficher les liens en fonction de l'état de connexion */}
+        {isAuthenticated ? (
+          <>
+             {location.pathname === '/' ? (
+              <Link to="/admin">Tableau de bord</Link>
+            ) : (
+              <Link to="/">Accueil</Link>
+            )}
+              <span className="logout-link" onClick={handleLogout}>Déconnexion</span>
+          </>
         ) : (
-          <Link to="/register">Inscription</Link>
+          <>  
+          {location.pathname === '/login' ? (
+            <Link to="/">Accueil</Link>
+          ) : (
+            <Link to="/login">Connexion</Link>
+          )}
+            {location.pathname === '/register' ? (
+              <Link to="/">Accueil</Link>
+            ) : (
+              <Link to="/register">Inscription</Link>
+            )}
+          </>
         )}
       </nav>
     </header>
   );
 }
+
 export default Header;

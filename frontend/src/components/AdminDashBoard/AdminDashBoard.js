@@ -6,11 +6,11 @@ function AdminDashBoard() {
     const [users, setUsers] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [newUser, setNewUser] = useState({
-        name:'',
-        first_name:'',
-        email:'',
-        password:'',
-        role:'ROLE_USER' //valeur par défaut
+        name: '',
+        first_name: '',
+        email: '',
+        password: '',
+        role: 'ROLE_USER' // valeur par défaut
     });
 
     useEffect(() => {
@@ -37,26 +37,25 @@ function AdminDashBoard() {
         e.preventDefault();
         try {
             await registerUser(newUser);
-            alert('Utilisateur crée avec succès');
+            alert('Utilisateur créé avec succès');
             setShowForm(false);
             setNewUser({
-                name:'',
-                first_name:'',
-                email:'',
-                password:'',
-                role:'ROLE_USER' // Réinitialiser la valeur par défaut
+                name: '',
+                first_name: '',
+                email: '',
+                password: '',
+                role: 'ROLE_USER' // Réinitialiser la valeur par défaut
             });
             const updatedUsers = await getAllUsers();
             setUsers(updatedUsers);
         } catch (error) {
             console.error('Erreur lors de la création de l\'utilisateur:', error);
-            alert('Erreur lors de la création de l\'utilisateur');
         }
     }
 
     return (
         <div className="admin-dashboard">
-            <h1>Tableau de Bord - Gestion des utlisateurs</h1>
+            <h1>Tableau de Bord - Gestion des utilisateurs</h1>
             <table>
                 <thead>
                     <tr>
@@ -68,26 +67,26 @@ function AdminDashBoard() {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((users) => (
-                        <tr key={users.id}>
-                            <td>{users.id}</td>
-                            <td>{users.name}</td>
-                            <td>{users.first_name}</td>
-                            <td>{users.email}</td>
-                            <td>{users.role}</td>
+                    {users.map((user) => (
+                        <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.first_name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.role}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
             <button className="create-user-button" onClick={() => setShowForm(!showForm)}>
-                    {showForm ? 'Annuler' : 'Créer un utilisateur'}
+                {showForm ? 'Annuler' : 'Créer un utilisateur'}
             </button>
 
             {showForm && (
                 <form className="create-user-form" onSubmit={handleCreateUser}>
-                    <div>
-                        <label>Nom</label>
+                    <label>
+                        Nom:
                         <input
                             type="text"
                             name="name"
@@ -95,9 +94,9 @@ function AdminDashBoard() {
                             onChange={handleInputChange}
                             required
                         />
-                    </div>
-                    <div>
-                        <label>Prénom</label>
+                    </label>
+                    <label>
+                        Prénom:
                         <input
                             type="text"
                             name="first_name"
@@ -105,9 +104,9 @@ function AdminDashBoard() {
                             onChange={handleInputChange}
                             required
                         />
-                    </div>
-                    <div>
-                        <label>Email</label>
+                    </label>
+                    <label>
+                        Email:
                         <input
                             type="email"
                             name="email"
@@ -115,9 +114,9 @@ function AdminDashBoard() {
                             onChange={handleInputChange}
                             required
                         />
-                    </div>
-                    <div>
-                        <label>Mot de passe</label>
+                    </label>
+                    <label>
+                        Mot de passe:
                         <input
                             type="password"
                             name="password"
@@ -125,20 +124,19 @@ function AdminDashBoard() {
                             onChange={handleInputChange}
                             required
                         />
-                    </div>
-                    <div>
-                        <label>Rôle</label>
+                    </label>
+                    <label>
+                        Rôle:
                         <select
                             name="role"
                             value={newUser.role}
                             onChange={handleInputChange}
-                            required
                         >
                             <option value="ROLE_USER">Utilisateur</option>
                             <option value="ROLE_ADMIN">Administrateur</option>
                         </select>
-                    </div>
-                    <button type="submit">Créer l'utilisateur</button>
+                    </label>
+                    <button type="submit">Créer</button>
                 </form>
             )}
         </div>

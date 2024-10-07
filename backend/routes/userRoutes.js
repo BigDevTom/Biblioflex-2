@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 
-// Route pour créer un nouvel utilisateur
-router.post('/users', userController.createUser);
+router.post('/register', userController.createUser);
 
-// Route pour la connexion
-router.post('/login', userController.loginUser);
-
-// Route pour récépurer tous les utilisateurs
-router.get('/users', userController.getAllUsers);
+// Route pour récupérer tous les utilisateurs (accessible uniquement aux admins)
+router.get('/users', authController.protect, authController.isAdmin, userController.getAllUsers);
 
 module.exports = router;

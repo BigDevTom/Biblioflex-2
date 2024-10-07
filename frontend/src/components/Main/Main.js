@@ -1,5 +1,6 @@
 import React from 'react';
 import './Main.css';
+import RecentBooks from '../RecentBooks/RecentBooks';
 
 function Main() {
   return (
@@ -14,6 +15,7 @@ function Main() {
         Notre objectif est de vous offrir une interface moderne et facile d'utilisation,
         tout en vous donnant les outils nécessaires pour suivre vos utilisateurs et vos livres.
       </p>
+      < RecentBooks />
     </main>
   );
 }

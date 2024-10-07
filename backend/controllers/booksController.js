@@ -87,3 +87,11 @@ exports.deleteBook = (req, res) => {
         res.json({ message: 'Livre supprimé avec succès.' });
     });
 };
+
+exports.getRecentBooks = (req, res) => {
+    const query = 'SELECT * FROM books ORDER BY created_at DESC LIMIT 5';
+    db.query(query, (err, results) => {
+        if (err) return res.status(500).json({ message: 'Erreur lors de la récupération des livres récents' });
+        res.json(results)
+    })
+}
