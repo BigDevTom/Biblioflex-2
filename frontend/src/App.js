@@ -6,6 +6,7 @@ import Connexion from './pages/Connexion'
 import './reset.css';
 import './App.css';
 import Admin from './pages/Admin';
+import Glossary from './pages/Glossary';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Connexion />} />
           <Route path="/register" element={<Inscription />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/glossary" element={<Glossary />} /> 
         </Routes>
       </div>
     </Router>

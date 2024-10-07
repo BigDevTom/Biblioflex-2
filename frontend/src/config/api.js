@@ -141,7 +141,7 @@ export const getAllGenres = async () => {
 
 export const getRecentBooks = async () => {
     try {
-        const response = await fetch(`${API_URL}/books`, {
+        const response = await fetch(`${API_URL}/books/recent`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

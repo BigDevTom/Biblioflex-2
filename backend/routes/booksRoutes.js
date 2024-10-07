@@ -5,6 +5,9 @@ const booksController = require('../controllers/booksController');
 // Route pour obtenir tous les livres
 router.get('/', booksController.getAllBooks);
 
+// Route pour obtenir les 5 derniers livres ajoutés
+router.get('/recent', booksController.getRecentBooks);
+
 // Route pour obtenir un livre par son ID
 router.get('/:id', booksController.getBookById);
 
@@ -16,8 +19,5 @@ router.put('/:id', booksController.updateBook);
 
 // Route pour supprimer un livre
 router.delete('/:id', booksController.deleteBook);
-
-// Route pour obtenir les 5 derniers livres ajoutés
-router.get('/recent', booksController.getRecentBooks);
 
 module.exports = router;

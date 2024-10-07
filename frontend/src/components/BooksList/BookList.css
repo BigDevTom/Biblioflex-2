@@ -1,0 +1,38 @@
+.book-list {
+    margin: 20px; /* Espacement autour du composant */
+    padding: 20px; /* Espacement interne */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #f9f9f9; /* Fond clair */
+}
+
+.book-list ul {
+    list-style-type: none; /* Pas de puces */
+    padding: 0; /* Pas de padding */
+}
+
+.book-list li {
+    padding: 10px; /* Espace interne pour chaque livre */
+    margin-bottom: 10px; /* Espace entre les livres */
+    border-bottom: 1px solid #eee; /* Ligne en bas de chaque livre */
+}
+
+.book-list li:last-child {
+    border-bottom: none; /* Pas de ligne en bas du dernier livre */
+}
+
+.book-list button {
+    margin-left: 20px; /* Espacement à gauche du bouton */
+    padding: 5px 10px; /* Padding interne du bouton */
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur */
+}
+
+.book-list button:disabled {
+    background-color: #ccc; /* Couleur du bouton désactivé */
+    cursor: not-allowed; /* Curseur interdit */
+}
+

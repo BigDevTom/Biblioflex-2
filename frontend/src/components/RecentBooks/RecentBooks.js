@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getRecentBooks } from '../../config/api';
 import './RecentBooks.css';
 
@@ -26,15 +27,18 @@ function RecentBooks() {
     if (error) return <p>{error}</p>
 
     return (
-        <div className="recent-books"> {/* Ajouter la classe ici */}
+        <div className="recent-books">
             <h2>Nouveautés</h2>
             <ul>
-                {recentBooks.map(book => (
-                    <li key={book.id}>
-                        <strong>{book.title}</strong> par {book.author}
+                {recentBooks.map(books => (
+                    <li key={books.id}>
+                        <strong>{books.title}</strong> par {books.author}
                     </li>
                 ))}
             </ul>
+            <div className="glossary-link">
+                <Link to="/glossary">Voir le glossaire</Link>
+            </div>
         </div>
     );
 }
