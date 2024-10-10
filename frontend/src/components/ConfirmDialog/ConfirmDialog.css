@@ -1,0 +1,58 @@
+.confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Arrière-plan sombre pour le contraste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* S'assurer que la boîte de dialogue est au-dessus des autres éléments */
+}
+
+.dialog-content {
+    width: 100%;
+    max-width: 500px; /* Largeur maximale de la boîte de dialogue */
+    padding: 20px;
+    background-color: var(--white); /* Utiliser la couleur blanche définie dans les variables */
+    border: 1px solid var(--secondary-color); /* Bordure avec couleur secondaire */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre pour un effet de profondeur */
+    text-align: center;
+}
+
+.dialog-actions {
+    margin-top: 20px;
+    display: flex; /* Utiliser flex pour aligner les boutons */
+    justify-content: center; /* Centrer les boutons */
+}
+
+.confirm-button, .cancel-button {
+    margin: 0 10px; /* Espacement entre les boutons */
+    padding: 10px 15px; /* Padding pour le confort */
+    border: none;
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer;
+    font-size: 16px; /* Taille de la police pour lisibilité */
+    transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.confirm-button {
+    background-color: var(--secondary-color); /* Utiliser la couleur d'erreur définie */
+    color: var(--white); /* Texte blanc */
+}
+
+.cancel-button {
+    background-color: var(--secondary-color); /* Couleur secondaire pour le bouton d'annulation */
+    color: var(--white); /* Texte blanc */
+}
+
+/* Effets de survol pour les boutons */
+.confirm-button:hover {
+    background-color: var(--primary-color); /* Couleur légèrement plus foncée lors du survol */
+}
+
+.cancel-button:hover {
+    background-color: var(--primary-color); /* Couleur légèrement plus foncée lors du survol */
+}

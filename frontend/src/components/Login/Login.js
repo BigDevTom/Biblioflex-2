@@ -33,6 +33,8 @@ function Login() {
                 // Redirection en fonction du rôle
                 if (userRole === 'ROLE_ADMIN') {
                     navigate('/admin');
+                } else if (userRole === 'ROLE_USER') {
+                    navigate('/user');
                 } else {
                     navigate('/');
                 }

@@ -5,12 +5,14 @@
   display: flex;
   justify-content: space-between; /* Espace entre le logo et les liens */
   align-items: center; /* Alignement vertical centré */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour donner du relief */
 }
 
 .navbar .logo {
   font-size: var(--font-size-h2);
-  color: var(--white); /* Assurez-vous que le logo est visible sur le fond */
+  color: var(--white);
   text-decoration: none; /* Enlever le soulignement du lien */
+  font-weight: bold; /* Accentuer le logo pour le différencier des autres liens */
 }
 
 .navbar .links {
@@ -23,7 +25,7 @@
   color: var(--white);
   text-decoration: none;
   font-size: var(--font-size-body);
-  transition: color 0.3s ease; /* Transition pour le changement de couleur */
+  transition: color 0.3s ease, transform 0.3s ease; /* Ajout d'une transition sur la transformation aussi */
 }
 
 .navbar .links a:hover, 
@@ -34,10 +36,13 @@
 
 .logout-link {
   color: var(--white);
-  margin-top: 0;
   background: none;
   border: none;
   font-size: var(--font-size-body);
   cursor: pointer;
-  transition: color 0.3s ease; /* Transition pour le changement de couleur */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logout-link:hover {
+  color: var(--red); /* Changement de couleur au survol pour indiquer une action importante */
 }

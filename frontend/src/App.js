@@ -7,6 +7,8 @@ import './reset.css';
 import './App.css';
 import Admin from './pages/Admin';
 import Glossary from './pages/Glossary';
+import User from './pages/User';
+import Update from './pages/Update';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/register" element={<Inscription />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/glossary" element={<Glossary />} /> 
+          <Route path="/user" element={<User />} />
+          <Route path="/update-book/:id" element={<Update />} />
         </Routes>
       </div>
     </Router>

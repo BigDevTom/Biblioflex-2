@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getAllBooks, createBook, getAllGenres } from "../../config/api";
+import { Link } from "react-router-dom"; // Importez Link depuis react-router-dom
+import { getAllBooks, createBook, deleteBook, getAllGenres } from "../../config/api"; // Importez deleteBook
+import ConfirmationDialog from "../ConfirmDialog/ConfirmDialog";
 import './BooksDashBoard.css';
 
 function BooksDashboard() {
@@ -16,6 +18,10 @@ function BooksDashboard() {
         description: '',
         availability: true,
     });
+    
+    // État pour la boîte de dialogue de confirmation
+    const [isDialogOpen, setDialogOpen] = useState(false);
+    const [bookIdToDelete, setBookIdToDelete] = useState(null);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -76,6 +82,29 @@ function BooksDashboard() {
         }
     };
 
+    // Fonction pour gérer la demande de suppression
+    const handleDeleteRequest = (bookId) => {
+        setBookIdToDelete(bookId); // Définir l'ID du livre à supprimer
+        setDialogOpen(true); // Ouvrir la boîte de dialogue de confirmation
+    };
+
+    // Fonction pour supprimer un livre
+    const handleDeleteConfirmation = async () => {
+        if (bookIdToDelete) {
+            try {
+                await deleteBook(bookIdToDelete); // Appeler la fonction pour supprimer le livre
+                setBooks(books.filter(book => book.id !== bookIdToDelete)); // Mettre à jour la liste après suppression
+                alert('Livre supprimé avec succès');
+            } catch (error) {
+                console.error('Erreur lors de la suppression du livre:', error);
+                alert('Erreur lors de la suppression du livre');
+            } finally {
+                setDialogOpen(false); // Fermer la boîte de dialogue
+                setBookIdToDelete(null); // Réinitialiser l'ID du livre à supprimer
+            }
+        }
+    };
+
     return (
         <div className="books-dashboard">
             <h1>Tableau de Bord - Gestion des Livres</h1>
@@ -90,6 +119,7 @@ function BooksDashboard() {
                         <th>ISBN</th>
                         <th>Exemplaires Disponibles</th>
                         <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,8 +133,15 @@ function BooksDashboard() {
                     <td>{book.isbn}</td>
                     <td>{book.copies_available}</td>
                     <td>{book.description}</td>
+                    <td>
+                        <Link to={`/update-book/${book.id}`} className="edit-link">
+                            Modifier
+                        </Link>
+                        <button onClick={() => handleDeleteRequest(book.id)}>Supprimer</button> {/* Bouton de suppression */}
+                    </td>
                 </tr>
             ))}
+
                 </tbody>
             </table>
 
@@ -194,6 +231,14 @@ function BooksDashboard() {
                     </div>
                 </form>
             )}
+
+            {/* Boîte de dialogue de confirmation */}
+            <ConfirmationDialog 
+                isOpen={isDialogOpen} 
+                onConfirm={handleDeleteConfirmation} 
+                onCancel={() => setDialogOpen(false)} 
+                message="Êtes-vous sûr de vouloir supprimer ce livre ?" 
+            />
         </div>
     );
 }

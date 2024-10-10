@@ -119,6 +119,73 @@ export const createBook = async (bookData) => {
     }
 };
 
+export const getBookById = async (bookId) => {
+    try {
+        const response = await fetch(`${API_URL}/books/${bookId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération du livre');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la récupération du livre', error);
+        throw error;
+    }
+};
+
+// Nouvelle fonction pour mettre à jour un livre
+export const updateBook = async (bookId, bookData) => {
+    try {
+        const token = getToken(); // Récupérer le token
+        const response = await fetch(`${API_URL}/books/${bookId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Ajouter le token dans l'en-tête
+            },
+            body: JSON.stringify(bookData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la mise à jour du livre');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour du livre', error);
+        throw error;
+    }
+};
+
+// Nouvelle fonction pour supprimer un livre
+export const deleteBook = async (bookId) => {
+    try {
+        const token = getToken(); // Récupérer le token
+        const response = await fetch(`${API_URL}/books/${bookId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Ajouter le token dans l'en-tête
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la suppression du livre');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la suppression du livre', error);
+        throw error;
+    }
+};
+
 export const getAllGenres = async () => {
     try {
         const response = await fetch(`${API_URL}/genres`, {
@@ -155,6 +222,52 @@ export const getRecentBooks = async () => {
         return await response.json();
     } catch (error) {
         console.error('Erreur lors de la récupération des livres récents', error);
+        throw error;
+    }
+};
+
+// Récupérer les emprunts en cours d'un utilisateur
+export const getCurrentLoansByUser = async (userId) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_URL}/loans/user/${userId}/current`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des emprunts en cours.');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la récupération des emprunts en cours :', error);
+        throw error;
+    }
+};
+
+// Récupérer les emprunts retournés d'un utilisateur
+export const getReturnedLoansByUser = async (userId) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_URL}/loans/user/${userId}/returned`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des emprunts retournés.');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la récupération des emprunts retournés :', error);
         throw error;
     }
 };
