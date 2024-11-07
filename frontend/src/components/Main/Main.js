@@ -15,7 +15,7 @@ function Main() {
         Notre objectif est de vous offrir une interface moderne et facile d'utilisation,
         tout en vous donnant les outils nécessaires pour suivre vos utilisateurs et vos livres.
       </p>
-      < RecentBooks />
+      <RecentBooks />
     </main>
   );
 }
