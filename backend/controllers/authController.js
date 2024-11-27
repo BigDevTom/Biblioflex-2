@@ -30,7 +30,7 @@ exports.createUser = (req, res) => {
         }
 
         // Hachage du mot de passe
-        bcrypt.hash(password, (err, hashedPassword) => {
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
             if (err) {
                 console.error('Erreur lors du hachage du mot de passe :', err);
                 

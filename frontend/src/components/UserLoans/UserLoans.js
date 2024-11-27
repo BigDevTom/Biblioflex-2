@@ -14,14 +14,10 @@ function UserLoans() {
 
     useEffect(() => {
         const fetchLoans = async () => {
-            console.log("Fetching loans...");
             setLoading(true);
             try {
                 const currentLoans = await getCurrentLoansByUser();
-                console.log("Current loans fetched:", currentLoans);
-    
                 const returnedLoans = await getReturnedLoansByUser();
-                console.log("Returned loans fetched:", returnedLoans);
     
                 setCurrentLoans(currentLoans);
                 setReturnedLoans(returnedLoans);
