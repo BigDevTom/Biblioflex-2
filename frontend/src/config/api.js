@@ -226,6 +226,30 @@ export const getRecentBooks = async () => {
     }
 };
 
+// Créer un nouvel emprunt
+export const createLoan = async (loanData) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_URL}/loans/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(loanData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur lors de la création de l\'emprunt');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors de la création de l\'emprunt', error);
+        throw error;
+    }
+};
+
 // Récupérer les emprunts en cours d'un utilisateur
 export const getCurrentLoansByUser = async (userId) => {
     try {

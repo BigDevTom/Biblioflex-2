@@ -37,7 +37,7 @@ function RecentBooks() {
                 ))}
             </ul>
             <div className="glossary-link">
-                <Link to="/glossary">Voir le glossaire</Link>
+                <Link to="/glossary">Voir le catalogue</Link>
             </div>
         </div>
     );

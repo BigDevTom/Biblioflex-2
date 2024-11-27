@@ -9,27 +9,37 @@ function UserLoans() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // Récupère l'ID utilisateur stocké dans le localstorage
-    const userId = JSON.parse(localStorage.getItem('user')).id;
+    // Récupère le token depuis le localStorage
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
         const fetchLoans = async () => {
+            console.log("Fetching loans...");
+            setLoading(true);
             try {
-                // Récupérer les emprunts en cours et retournés
-                const current = await getCurrentLoansByUser(userId);
-                const returned = await getReturnedLoansByUser(userId);
-
-                setCurrentLoans(current);
-                setReturnedLoans(returned);
-            } catch (err) {
-                setError('Erreur lors de la récupération des emprunts');
+                const currentLoans = await getCurrentLoansByUser();
+                console.log("Current loans fetched:", currentLoans);
+    
+                const returnedLoans = await getReturnedLoansByUser();
+                console.log("Returned loans fetched:", returnedLoans);
+    
+                setCurrentLoans(currentLoans);
+                setReturnedLoans(returnedLoans);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des emprunts :", error);
+                setError("Erreur lors de la récupération des emprunts");
             } finally {
                 setLoading(false);
             }
         };
+    
+        if (token) fetchLoans();
+    }, [token]);
 
-        fetchLoans();
-    }, [userId]);
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString(); // Format de date lisible
+    };
 
     if (loading) return <p>Chargement des emprunts...</p>;
     if (error) return <p>{error}</p>;
@@ -47,9 +57,9 @@ function UserLoans() {
                                 <li key={loan.id}>
                                     <strong>{loan.title}</strong> par {loan.author}
                                     <br />
-                                    Date d'emprunt : {loan.loan_date}
+                                    Date d'emprunt : {formatDate(loan.loan_date)}
                                     <br />
-                                    Date de retour prévue : {loan.return_date}
+                                    Date de retour prévue : {formatDate(loan.return_date)}
                                     <br />
                                     Statut : {loan.status}
                                 </li>
@@ -67,9 +77,9 @@ function UserLoans() {
                                 <li key={loan.id}>
                                     <strong>{loan.title}</strong> par {loan.author}
                                     <br />
-                                    Date d'emprunt : {loan.loan_date}
+                                    Date d'emprunt : {formatDate(loan.loan_date)}
                                     <br />
-                                    Date de retour : {loan.return_date}
+                                    Date de retour : {formatDate(loan.return_date)}
                                     <br />
                                     Statut : {loan.status}
                                 </li>
