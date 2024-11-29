@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css';
 import { registerUser } from '../../config/api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ function Register() {
 
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false); // Pour gérer l'état de chargement
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
       const { name, value } = e.target;
@@ -30,6 +31,7 @@ function Register() {
           if (response.status === 201) {
               setMessage('Inscription réussie !');
               setFormData({ name: '', first_name: '', email: '', password: '', role: 'ROLE_USER' }); // Réinitialiser le formulaire
+              navigate('/');
           } else {
               const errorData = await response.json();
               setMessage(errorData.message || 'Erreur lors de l\'inscription.');
